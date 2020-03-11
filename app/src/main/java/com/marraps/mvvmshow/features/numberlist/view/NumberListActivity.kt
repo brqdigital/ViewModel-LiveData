@@ -1,4 +1,4 @@
-package com.marraps.mvvmshow.numberlist.view
+package com.marraps.mvvmshow.features.numberlist.view
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marraps.mvvmshow.R
-import com.marraps.mvvmshow.numberlist.viewmodel.NumberListViewModel
+import com.marraps.mvvmshow.features.numberlist.viewmodel.NumberListViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class NumberListActivity : AppCompatActivity() {

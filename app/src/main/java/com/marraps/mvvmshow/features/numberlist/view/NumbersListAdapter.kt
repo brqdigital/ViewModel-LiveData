@@ -1,4 +1,4 @@
-package com.marraps.mvvmshow.numberlist.view
+package com.marraps.mvvmshow.features.numberlist.view
 
 import android.view.LayoutInflater
 import android.view.View

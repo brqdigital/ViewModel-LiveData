@@ -1,4 +1,4 @@
-package com.marraps.mvvmshow.numberlist.model
+package com.marraps.mvvmshow.features.numberlist.model
 
 interface NumbersServiceListener {
 
