@@ -37,6 +37,7 @@ class NumberListActivity : AppCompatActivity() {
         setObservers()
 
         viewModel.getNumbers()
+//        viewModel.getNumbersMock(applicationContext.resources)
     }
 
     private fun setList() {

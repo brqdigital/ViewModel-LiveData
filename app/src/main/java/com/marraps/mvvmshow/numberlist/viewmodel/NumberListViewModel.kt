@@ -1,25 +1,36 @@
 package com.marraps.mvvmshow.numberlist.viewmodel
 
+import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.marraps.mvvmshow.R
 import com.marraps.mvvmshow.numberlist.model.NumberListRepository
 import com.marraps.mvvmshow.numberlist.model.NumbersResponse
 import com.marraps.mvvmshow.numberlist.model.NumbersServiceListener
+import com.marraps.mvvmshow.toClass
 
-class NumberListViewModel(private val repository: NumberListRepository): ViewModel(), NumbersServiceListener {
+class NumberListViewModel(private val repository: NumberListRepository) : ViewModel(),
+    NumbersServiceListener {
 
-    sealed class Command{
-        object ShowLoading: Command()
-        object HideLoading: Command()
+    sealed class Command {
+        object ShowLoading : Command()
+        object HideLoading : Command()
     }
 
     val command = MutableLiveData<Command>()
     val numberList = MutableLiveData<List<Int>>()
     val numberError = MutableLiveData<Throwable>()
 
-    fun getNumbers(){
+    fun getNumbers() {
         command.value = Command.ShowLoading
         repository.getNumbers(this)
+    }
+
+    fun getNumbersMock(resouces: Resources) {
+        command.value = Command.HideLoading
+        val numbersMock = resouces.openRawResource(R.raw.numbers)
+            .toClass(NumbersResponse::class.java)
+        numberList.value = numbersMock.numbers
     }
 
     override fun onSuccess(response: NumbersResponse) {
