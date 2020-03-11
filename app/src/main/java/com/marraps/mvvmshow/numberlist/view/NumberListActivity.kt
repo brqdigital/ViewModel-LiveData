@@ -6,12 +6,11 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marraps.mvvmshow.R
-import com.marraps.mvvmshow.ViewModelFactory
 import com.marraps.mvvmshow.numberlist.viewmodel.NumberListViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class NumberListActivity : AppCompatActivity() {
 
@@ -23,11 +22,7 @@ class NumberListActivity : AppCompatActivity() {
         findViewById<ProgressBar>(R.id.pb_list_loading)
     }
 
-    private val viewModel by lazy {
-        ViewModelProviders
-                .of(this, ViewModelFactory())
-                .get(NumberListViewModel::class.java)
-    }
+    private val viewModel: NumberListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,12 +59,12 @@ class NumberListActivity : AppCompatActivity() {
         })
     }
 
-    private fun showLoading(){
+    private fun showLoading() {
         numberList.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
     }
 
-    private fun hideLoading(){
+    private fun hideLoading() {
         numberList.visibility = View.VISIBLE
         progressBar.visibility = View.GONE
     }
