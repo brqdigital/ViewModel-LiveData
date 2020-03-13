@@ -32,11 +32,11 @@ class NumberListViewModelTest {
     }
 
     @Test
-    fun getNumbers_successResponse(){
+    fun getNumbers_successResponse() {
         val response: NumbersResponse = mockk()
         val numberList = listOf(1, 2, 3, 4)
 
-        every { repository.getNumbers(viewModel) } answers {viewModel.onSuccess(response)}
+        every { repository.getNumbers(viewModel) } answers { viewModel.onSuccess(response) }
         every { response.numbers } returns numberList
 
         viewModel.getNumbers()
@@ -46,10 +46,10 @@ class NumberListViewModelTest {
     }
 
     @Test
-    fun getNumbers_errorResponse(){
+    fun getNumbers_errorResponse() {
         val error = Exception()
 
-        every { repository.getNumbers(viewModel) } answers {viewModel.onError(error)}
+        every { repository.getNumbers(viewModel) } answers { viewModel.onError(error) }
 
         viewModel.getNumbers()
 
